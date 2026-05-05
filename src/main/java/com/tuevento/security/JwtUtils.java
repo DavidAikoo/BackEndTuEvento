@@ -48,6 +48,15 @@ public class JwtUtils {
                 .getSubject();
     }
 
+    public String getClaimFromJwtToken(String token, String claimName) {
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .get(claimName, String.class);
+    }
+
     public boolean validateJwtToken(String authToken) {
         try {
             Jwts.parser()

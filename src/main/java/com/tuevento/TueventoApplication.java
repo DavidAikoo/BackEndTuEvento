@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TueventoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TueventoApplication.class, args);
+		SpringApplication app = new SpringApplication(TueventoApplication.class);
+		app.setAllowCircularReferences(true);
+		app.run(args);
 	}
-
 }
